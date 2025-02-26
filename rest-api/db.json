@@ -1,0 +1,202 @@
+[
+  {
+    "id": 3,
+    "name": "Tablet",
+    "price": 600,
+    "description": "10-inch tablet",
+    "categories": [
+      "Electronics",
+      "Mobile"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Smartwatch",
+    "price": 250,
+    "description": "Fitness tracker",
+    "categories": [
+      "Electronics",
+      "Wearables"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Headphones",
+    "price": 150,
+    "description": "Noise-cancelling headphones",
+    "categories": [
+      "Electronics",
+      "Audio"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Keyboard",
+    "price": 100,
+    "description": "Mechanical keyboard",
+    "categories": [
+      "Electronics",
+      "Accessories"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Mouse",
+    "price": 50,
+    "description": "Wireless mouse",
+    "categories": [
+      "Electronics",
+      "Accessories"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Monitor",
+    "price": 300,
+    "description": "27-inch 4K monitor",
+    "categories": [
+      "Electronics",
+      "Accessories"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Printer",
+    "price": 200,
+    "description": "Color laser printer",
+    "categories": [
+      "Electronics",
+      "Office"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Camera",
+    "price": 700,
+    "description": "Mirrorless camera",
+    "categories": [
+      "Electronics",
+      "Photography"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Drone",
+    "price": 500,
+    "description": "Quadcopter drone",
+    "categories": [
+      "Electronics",
+      "Toys"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Speaker",
+    "price": 120,
+    "description": "Portable Bluetooth speaker",
+    "categories": [
+      "Electronics",
+      "Audio"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Router",
+    "price": 80,
+    "description": "Wi-Fi 6 router",
+    "categories": [
+      "Electronics",
+      "Networking"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "External HDD",
+    "price": 90,
+    "description": "1TB external hard drive",
+    "categories": [
+      "Electronics",
+      "Storage"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "USB Flash Drive",
+    "price": 20,
+    "description": "128GB USB 3.0 flash drive",
+    "categories": [
+      "Electronics",
+      "Storage"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Power Bank",
+    "price": 40,
+    "description": "20000mAh power bank",
+    "categories": [
+      "Electronics",
+      "Accessories"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "E-Reader",
+    "price": 130,
+    "description": "E-ink e-reader",
+    "categories": [
+      "Electronics",
+      "Books"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "VR Headset",
+    "price": 400,
+    "description": "Virtual reality headset",
+    "categories": [
+      "Electronics",
+      "Gaming"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Projector",
+    "price": 350,
+    "description": "HD home theater projector",
+    "categories": [
+      "Electronics",
+      "Home Theater"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Gaming Chair",
+    "price": 250,
+    "description": "Ergonomic gaming chair",
+    "categories": [
+      "Furniture",
+      "Gaming"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Desk Lamp",
+    "price": 45,
+    "description": "LED desk lamp",
+    "categories": [
+      "Home",
+      "Office"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Backpack",
+    "price": 70,
+    "description": "Waterproof laptop backpack",
+    "categories": [
+      "Accessories",
+      "Travel"
+    ]
+  }
+]

@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #1e1e1e;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ffffff;
+}
+
+h1 {
+  color: #8657DB;
+  font-size: 2.5rem;
+}
+
+.category-header {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 20px 0;
+  border-bottom: 2px solid #8657DB; /* Add an underline */
+  padding-bottom: 10px;
+}
+
+footer {
+  background-color: #1e1e1e;
+  padding: 10px;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 2px solid #8657DB;
+  margin-top: auto;
+}
+
+footer p {
+  color: #bbbbbb;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  flex: 1;
+}
+
+.category-container {
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates a responsive grid */
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.product-card:hover {
+  transform: translateY(-10px);
+}
+.product-card .product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-card .product-name {
+  font-size: 1.5rem;
+  color: #8657DB;
+  margin: 15px 0;
+  flex-grow: 0;
+}
+.product-card .product-description {
+  color: #bbbbbb;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-card .product-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  flex-grow: 0;
+}
+
+.filter-label {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.filter-select {
+  padding: 8px 15px;
+  font-size: 1rem;
+  background-color: #121212;
+  color: #ffffff;
+  border: 2px solid #8657DB;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-select:hover {
+  background-color: #8657DB;
+  border-color: #ffffff;
+}
+
+.filter-select:focus {
+  outline: none;
+  background-color: #8657DB;
+  border-color: #ffffff;
+}
+
+.product-card .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  background: linear-gradient(145deg, #8657db, #7a4bb9);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(145deg, #7a4bb9, #8657db);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px #8657db;
+}
+
+button#delete-btn {
+  background: linear-gradient(145deg, #db6b6b, #e35d5d);
+  color: #fff;
+}
+
+button#delete-btn:hover {
+  background: linear-gradient(145deg, #e35d5d, #db6b6b);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+button.edit-btn {
+  background: linear-gradient(145deg, #8657db, #7a4bb9);
+}
+
+button.delete-btn {
+  background: linear-gradient(145deg, #db6b6b, #e35d5d);
+}
+
+input[type=text],
+input[type=number] {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #8657DB;
+  border-radius: 8px;
+  background-color: #121212;
+  color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type=text]:focus,
+input[type=number]:focus {
+  outline: none;
+  border-color: #8657DB;
+  box-shadow: 0 0 10px rgba(134, 87, 219, 0.5);
+}
+
+/*# sourceMappingURL=styles.css.map */

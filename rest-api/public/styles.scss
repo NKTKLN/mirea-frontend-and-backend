@@ -1,0 +1,200 @@
+$dark-bg: #121212;
+$light-bg: #1e1e1e;
+$purple-accent: #8657DB;
+$light-text: #ffffff;
+$gray-text: #bbbbbb;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: $dark-bg;
+    color: $light-text;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: $light-bg;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid $light-text;
+}
+
+h1 {
+    color: $purple-accent;
+    font-size: 2.5rem;
+}
+
+.category-header {
+    font-size: 1.8rem;
+    color: $light-text;
+    margin: 20px 0;
+    border-bottom: 2px solid $purple-accent; /* Add an underline */
+    padding-bottom: 10px;
+}
+
+footer {
+    background-color: $light-bg;
+    padding: 10px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid $purple-accent;
+    margin-top: auto;
+}
+
+footer p {
+    color: $gray-text;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    flex: 1;
+}
+
+.category-container {
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates a responsive grid */
+    gap: 20px;
+}
+
+.product-card {
+    background-color: $light-bg;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    &:hover {
+        transform: translateY(-10px);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .product-name {
+        font-size: 1.5rem;
+        color: $purple-accent;
+        margin: 15px 0;
+        flex-grow: 0;
+    }
+
+    .product-description {
+        color: $gray-text;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .product-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $light-text;
+        margin-bottom: 20px;
+        flex-grow: 0;
+    }
+}
+
+.filter-label {
+    font-size: 1.2rem;
+    color: $light-text;
+}
+
+.filter-select {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: $dark-bg;
+    color: $light-text;
+    border: 2px solid $purple-accent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-select:hover {
+    background-color: $purple-accent;
+    border-color: $light-text;
+}
+
+.filter-select:focus {
+    outline: none;
+    background-color: $purple-accent;
+    border-color: $light-text;
+}
+
+.product-card .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    background: linear-gradient(145deg, #8657db, #7a4bb9);
+    color: $light-text;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(145deg, #7a4bb9, #8657db);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #8657db;
+}
+
+button#delete-btn {
+    background: linear-gradient(145deg, #db6b6b, #e35d5d);
+    color: #fff;
+}
+
+button#delete-btn:hover {
+    background: linear-gradient(145deg, #e35d5d, #db6b6b);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+button.edit-btn {
+    background: linear-gradient(145deg, #8657db, #7a4bb9);
+}
+
+button.delete-btn {
+    background: linear-gradient(145deg, #db6b6b, #e35d5d);
+}
