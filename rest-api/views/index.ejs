@@ -3,74 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
+    <title>Shop</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Add FontAwesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
         <label for="category-selector" class="filter-label">Select Category:</label>
         <select id="category-selector" class="filter-select">
             <option value="all">All Products</option>
-            <% const categories = {}; %>
-            <% products.forEach(product => { %>
-                <% product.categories.forEach(category => { %>
-                    <% if (!categories[category]) { categories[category] = []; } %>
-                    <% categories[category].push(product); %>
-                <% }); %>
-            <% }); %>
-
-            <% Object.keys(categories).forEach(category => { %>
-                <option value="<%= category %>"><%= category %></option>
-            <% }); %>
+            <!-- Категории будут добавляться динамически -->
         </select>
         <a href="/add">Add Product</a>
     </header>
 
     <main>
         <div id="product-container" class="product-container">
-            <% Object.keys(categories).forEach(category => { %>
-                <div class="category-container" id="<%= category %>">
-                    <div class="category-header"><%= category %></div>
-
-                    <div class="product-grid">
-                        <% categories[category].forEach(product => { %>
-                            <div class="product-card">
-                                <h2 class="product-name"><%= product.name %></h2>
-                                <p class="product-description"><%= product.description %></p>
-                                <p class="product-price">$<%= product.price %></p>
-                            
-                                <div class="button-container">
-                                    <button onclick="window.location.href='/edit/<%= product.id %>'" class="edit-btn">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button onclick="deleteProduct('<%= product.id %>')" class="delete-btn">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <script>
-                                function deleteProduct(id) {
-                                    if (confirm('Are you sure you want to delete this product?')) {
-                                        fetch(`/api/products/${id}`, {
-                                            method: 'DELETE',
-                                        })
-                                        .then(response => {
-                                            if (response.status === 204) {
-                                                alert('Product deleted');
-                                                window.location.reload();
-                                            } else {
-                                                alert('Error deleting product');
-                                            }
-                                        });
-                                    }
-                                }
-                            </script>
-                        <% }); %>
-                    </div>
-                </div>
-            <% }); %>
+            <!-- Продукты будут загружаться динамически -->
         </div>
 
         <div class="chat">
@@ -90,5 +39,201 @@
     </footer>
 
     <script src="parser.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categorySelector = document.getElementById('category-selector');
+            const productContainer = document.getElementById('product-container');
+
+            // Функция для загрузки продуктов с фильтрацией по категории через GraphQL
+            async function loadProducts(category = 'all') {
+                const query = `
+                    query {
+                        products(category: "${category}") {
+                            id
+                            name
+                            description
+                            price
+                            categories
+                        }
+                    }
+                `;
+
+                const response = await fetch('http://localhost:4000', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                const { data } = await response.json();
+                const products = data.products;
+                displayProducts(products);
+                updateCategories(products);
+            }
+
+            // Отображение продуктов на странице
+            function displayProducts(products) {
+                productContainer.innerHTML = '';
+
+                const categories = {};
+
+                products.forEach(product => {
+                    if (product.categories) {
+                        product.categories.forEach(category => {
+                            if (!categories[category]) {
+                                categories[category] = [];
+                            }
+                            categories[category].push(product);
+                        });
+                    }
+                });
+
+                Object.keys(categories).forEach(category => {
+                    const categoryContainer = document.createElement('div');
+                    categoryContainer.classList.add('category-container');
+                    categoryContainer.id = category;
+
+                    const categoryHeader = document.createElement('div');
+                    categoryHeader.classList.add('category-header');
+                    categoryHeader.textContent = category;
+                    categoryContainer.appendChild(categoryHeader);
+
+                    const productGrid = document.createElement('div');
+                    productGrid.classList.add('product-grid');
+                    categoryContainer.appendChild(productGrid);
+
+                    categories[category].forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+
+                        const productName = document.createElement('h2');
+                        productName.classList.add('product-name');
+                        productName.textContent = product.name;
+
+                        const productDescription = document.createElement('p');
+                        productDescription.classList.add('product-description');
+                        productDescription.textContent = product.description;
+
+                        const productPrice = document.createElement('p');
+                        productPrice.classList.add('product-price');
+                        productPrice.textContent = `$${product.price}`;
+
+                        const buttonContainer = document.createElement('div');
+                        buttonContainer.classList.add('button-container');
+
+                        const editButton = document.createElement('button');
+                        editButton.classList.add('edit-btn');
+                        editButton.innerHTML = '<i class="fas fa-edit"></i>';
+                        editButton.onclick = () => window.location.href = `/edit/${product.id}`;
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.classList.add('delete-btn');
+                        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                        deleteButton.onclick = () => deleteProduct(product.id);
+
+                        buttonContainer.appendChild(editButton);
+                        buttonContainer.appendChild(deleteButton);
+
+                        productCard.appendChild(productName);
+                        productCard.appendChild(productDescription);
+                        productCard.appendChild(productPrice);
+                        productCard.appendChild(buttonContainer);
+
+                        productGrid.appendChild(productCard);
+                    });
+
+                    productContainer.appendChild(categoryContainer);
+                });
+            }
+
+            // Функция для обновления списка категорий
+            function updateCategories(products) {
+                const allCategories = new Set();
+                products.forEach(product => {
+                    product.categories.forEach(category => {
+                        allCategories.add(category);
+                    });
+                });
+
+                categorySelector.innerHTML = '<option value="all">All Products</option>';
+                allCategories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categorySelector.appendChild(option);
+                });
+            }
+
+            // Фильтрация продуктов по выбранной категории
+            categorySelector.addEventListener('change', (event) => {
+                const selectedCategory = event.target.value;
+                loadProducts(selectedCategory);
+            });
+
+            // Инициализация загрузки всех продуктов
+            loadProducts();
+
+            // WebSocket чат
+            const socket = new WebSocket('ws://localhost:5000'); 
+
+            const sendButton = document.getElementById('send-btn');
+            const messageInput = document.getElementById('message-input');
+            const chatMessages = document.getElementById('chat-messages');
+
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (message && socket.readyState === WebSocket.OPEN) {
+                    socket.send(message);
+                    messageInput.value = '';
+                }
+            }
+
+            sendButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                sendMessage();
+            });
+
+            messageInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            socket.addEventListener('message', (event) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('chat__message');
+                messageDiv.textContent = event.data;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+
+            socket.addEventListener('close', () => {
+                console.log('Disconnected from WebSocket server');
+            });
+
+            socket.addEventListener('error', (error) => {
+                console.error('WebSocket Error:', error);
+            });
+
+            // Функция для удаления продукта
+            function deleteProduct(id) {
+                if (confirm('Are you sure you want to delete this product?')) {
+                    fetch(`/api/products/${id}`, {
+                        method: 'DELETE',
+                    })
+                    .then(response => {
+                        if (response.status === 204) {
+                            alert('Product deleted');
+                            loadProducts(); // Перезагружаем продукты после удаления
+                        } else {
+                            alert('Error deleting product');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>

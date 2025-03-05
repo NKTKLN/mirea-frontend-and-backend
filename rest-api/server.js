@@ -28,26 +28,31 @@ const typeDefs = gql`
         name: String!
         price: Float
         description: String
+        categories: [String]
     }
 
     type Query {
-        products(name: String): [Product]
+        products(name: String, category: String): [Product]
         product(id: ID!): Product
     }
 `;
 
 const resolvers = {
     Query: {
-        products: (_, { name }) => {
+        products: (_, { name, category }) => {
             let products = readProducts();
             if (name) {
-                return products.filter(p => p.name.toLowerCase().includes(name.toLowerCase()));
+                products = products.filter(p => p.name.toLowerCase().includes(name.toLowerCase()));
+            }
+            if (category && category !== 'all') {
+                products = products.filter(p => p.categories && p.categories.includes(category));
             }
             return products;
         },
         product: (_, { id }) => readProducts().find(p => p.id == id),
     },
 };
+
 
 const app_api = express();
 const app_web = express();
@@ -66,12 +71,17 @@ function readProducts() {
     try {
         return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
     } catch (err) {
+        console.error('Error reading products file:', err);
         return [];
     }
 }
 
 function writeProducts(data) {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+    try {
+        fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+    } catch (err) {
+        console.error('Error writing products file:', err);
+    }
 }
 
 app_web.get('/', (req, res) => {
@@ -85,9 +95,8 @@ app_web.get('/add', (req, res) => {
 
 app_web.get('/edit/:id', (req, res) => {
     let products = readProducts();
-    const index = products.findIndex(p => p.id == req.params.id);
-    if (index) {
-        let product = products[index];
+    const product = products.find(p => p.id == req.params.id);
+    if (product) {
         res.render('edit', { product });
     } else {
         res.status(404).send('Product not found');
@@ -109,6 +118,9 @@ app_web.put('/api/products/:id', (req, res) => {
 app_web.delete('/api/products/:id', (req, res) => {
     let products = readProducts();
     const filteredProducts = products.filter(p => p.id != req.params.id);
+    if (filteredProducts.length === products.length) {
+        return res.status(404).send('Product not found');
+    }
     writeProducts(filteredProducts);
     res.status(204).send();
 });
@@ -121,6 +133,7 @@ app_web.post('/api/products', (req, res) => {
     res.status(201).json(newProduct);
 });
 
+// Swagger Documentation for API
 /**
  * @swagger
  * /api/products:
@@ -206,6 +219,9 @@ app_api.put('/api/products/:id', (req, res) => {
 app_api.delete('/api/products/:id', (req, res) => {
     let products = readProducts();
     const filteredProducts = products.filter(p => p.id != req.params.id);
+    if (filteredProducts.length === products.length) {
+        return res.status(404).send('Product not found');
+    }
     writeProducts(filteredProducts);
     res.status(204).send();
 });
@@ -240,10 +256,12 @@ app_api.post('/api/products', (req, res) => {
     res.status(201).json(newProduct);
 });
 
-app_api.listen(API_PORT);
-app_web.listen(WEB_PORT);
-server.listen(GRAPHQL_PORT);
+// Start all services
+app_api.listen(API_PORT, () => console.log(`API running on port ${API_PORT}`));
+app_web.listen(WEB_PORT, () => console.log(`Web app running on port ${WEB_PORT}`));
+server.listen(GRAPHQL_PORT, () => console.log(`GraphQL server running on port ${GRAPHQL_PORT}`));
 
+// WebSocket server setup
 wss.on('connection', ws => {
     console.log('User connected');
     
