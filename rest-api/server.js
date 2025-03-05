@@ -1,13 +1,17 @@
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const { ApolloServer, gql } = require('apollo-server');
+const WebSocket = require('ws');
+const fs = require('fs');
 const ejs = require('ejs');
 
 const API_PORT = 8080;
 const WEB_PORT = 3000;
+const GRAPHQL_PORT = 4000;
+const WEBSOCKET_PORT = 5000;
 const DATA_FILE = 'db.json';
 
 const options = {
@@ -18,9 +22,38 @@ const options = {
     apis: ['./server.js'],
 };
 
+const typeDefs = gql`
+    type Product {
+        id: ID!
+        name: String!
+        price: Float
+        description: String
+    }
+
+    type Query {
+        products(name: String): [Product]
+        product(id: ID!): Product
+    }
+`;
+
+const resolvers = {
+    Query: {
+        products: (_, { name }) => {
+            let products = readProducts();
+            if (name) {
+                return products.filter(p => p.name.toLowerCase().includes(name.toLowerCase()));
+            }
+            return products;
+        },
+        product: (_, { id }) => readProducts().find(p => p.id == id),
+    },
+};
+
 const app_api = express();
 const app_web = express();
 const specs = swaggerJsdoc(options);
+const server = new ApolloServer({ typeDefs, resolvers });
+const wss = new WebSocket.Server({ port: WEBSOCKET_PORT });
 
 app_web.set('view engine', 'ejs');
 app_web.set('views', path.join(__dirname, 'views'));
@@ -209,3 +242,17 @@ app_api.post('/api/products', (req, res) => {
 
 app_api.listen(API_PORT);
 app_web.listen(WEB_PORT);
+server.listen(GRAPHQL_PORT);
+
+wss.on('connection', ws => {
+    console.log('User connected');
+    
+    ws.on('message', message => {
+        console.log(`Received: ${message}`);
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(message.toString()); 
+        }
+    });
+
+    ws.on('close', () => console.log('User disconnected'));
+});
