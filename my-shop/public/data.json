@@ -1,0 +1,274 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Ноутбук ASUS VivoBook 15",
+      "price": 45000,
+      "description": "15.6 дюймов, Intel Core i5, 8 ГБ ОЗУ, 512 ГБ SSD",
+      "image": "https://c.dns-shop.ru/thumb/st4/fit/500/500/5d3a1ce11c8b728e0dc07e74e93c71d0/6ac42ffe4e9a9f4a2eaa01460bb1b8704ea044627ae6d742ab2af0e76442c923.jpg.webp",
+      "category": "electronics",
+      "rating": 4.7
+    },
+    {
+      "id": 2,
+      "title": "Смартфон Samsung Galaxy S21",
+      "price": 60000,
+      "description": "6.2 дюймов, 128 ГБ, Phantom Gray",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.lWn1A2suze_sIgFLo8IDzAHaFK%26pid%3DApi&f=1&ipt=3d2d244c2af139fd1358798981972f9b621b9c371ad4833f6117d2868bd18cce&ipo=images",
+      "category": "electronics",
+      "rating": 4.8
+    },
+    {
+      "id": 3,
+      "title": "Наушники Sony WH-1000XM4",
+      "price": 25000,
+      "description": "Беспроводные, шумоподавление, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ktYNPEUSedsb8NR8dbllDwHaHa%26pid%3DApi&f=1&ipt=c82b6a99f12187e3e54d45166a7e43a05912e43f7edfd170187782ba28feba35&ipo=images",
+      "category": "electronics",
+      "rating": 4.9
+    },
+    {
+      "id": 4,
+      "title": "Фитнес-браслет Xiaomi Mi Band 6",
+      "price": 3000,
+      "description": "Цветной AMOLED-экран, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.JNX66R-padKqO3uilzgN1AHaDn%26pid%3DApi&f=1&ipt=1ba06c1a01d3a14e4b54e76c772dd4cc940e7e46cd41603d036b855a1ef67cc0&ipo=images",
+      "category": "electronics",
+      "rating": 4.6
+    },
+    {
+      "id": 5,
+      "title": "Планшет Apple iPad Air",
+      "price": 55000,
+      "description": "10.9 дюймов, 64 ГБ, Space Gray",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ryVVDW6RUj2_ReR-p9x5QAHaHa%26pid%3DApi&f=1&ipt=2b3c9b86e4a016e7971346fae6353ec7dac799bc217f67703784803412e61899&ipo=images",
+      "category": "electronics",
+      "rating": 4.8
+    },
+    {
+      "id": 6,
+      "title": "Фотоаппарат Canon EOS R6",
+      "price": 150000,
+      "description": "Зеркальный, 20 Мп, 4К видео",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.f0NgOjBksh_IJjjdavRpHAHaHa%26pid%3DApi&f=1&ipt=3aecb42ac381eef35fa9fc096a089fed7f1c211d512507e4dd7e2e2a0c2eac1a&ipo=images",
+      "category": "electronics",
+      "rating": 4.9
+    },
+    {
+      "id": 7,
+      "title": "Монитор Dell UltraSharp 27",
+      "price": 40000,
+      "description": "27 дюймов, 4К, IPS",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.IdLeRJZjIivqOYw3nWbH2QHaEK%26pid%3DApi&f=1&ipt=631df40bef229abbeb8a9f6a82ce3e7d7e8be0024c512d61ea8ce69069c8118d&ipo=images",
+      "category": "electronics",
+      "rating": 4.7
+    },
+    {
+      "id": 8,
+      "title": "Игровая мышь Logitech G502",
+      "price": 5000,
+      "description": "11 программируемых кнопок, RGB",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.jXvbK3BcP8PJBh22qedMewHaHa%26pid%3DApi&f=1&ipt=03c1f7de1dae1a5fa467ad8d4f08c2d5f0d09fad5d28c5617184b7c21f63bc69&ipo=images",
+      "category": "electronics",
+      "rating": 4.8
+    },
+    {
+      "id": 9,
+      "title": "Клавиатура Keychron K6",
+      "price": 7000,
+      "description": "Механическая, Bluetooth, 65%",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.2lrG9rTxIhoJh3rm-pDbdwHaHa%26pid%3DApi&f=1&ipt=2d269a2c5ca4d50ce2b46941716fa8ed5956dceba3151a5383c06c4b3774ab3f&ipo=images",
+      "category": "electronics",
+      "rating": 4.7
+    },
+    {
+      "id": 10,
+      "title": "Колонка JBL Flip 5",
+      "price": 8000,
+      "description": "Портативная, водонепроницаемая, синий",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.jSgXYjfTm3Uh0QvY87nk0gHaHZ%26pid%3DApi&f=1&ipt=63511f2582bca449a11fa14ff1eed8006bb2971e60141e7dde5a8f1cbd26c5a9&ipo=images",
+      "category": "electronics",
+      "rating": 4.6
+    },
+    {
+      "id": 11,
+      "title": "Футболка мужская",
+      "price": 1500,
+      "description": "Хлопок, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.KXWOUg9CmXi0ILiPmjt8XQHaHa%26pid%3DApi&f=1&ipt=303665aadd2082cbc75f7e7dfbd617a6977b9ddcfdcaf4c3499b6fcf0f22211b&ipo=images",
+      "category": "clothing",
+      "rating": 4.5
+    },
+    {
+      "id": 12,
+      "title": "Джинсы женские",
+      "price": 3000,
+      "description": "Скинни, синий",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.k8YwPpcR90hpGYXlm0nqWQHaJ3%26pid%3DApi&f=1&ipt=b0adbd2f989f501955b0d52712b559e3aaad744ca7a32664490591f0fe86cc73&ipo=images",
+      "category": "clothing",
+      "rating": 4.6
+    },
+    {
+      "id": 13,
+      "title": "Куртка зимняя",
+      "price": 10000,
+      "description": "Пуховая, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Duajrh3PXN6hRCJMA5SBPwHaJ7%26pid%3DApi&f=1&ipt=6d153187605e5b8ae296e071ca9c9e8009a396d05954e13a85ae6763cf50c687&ipo=imagesg",
+      "category": "clothing",
+      "rating": 4.7
+    },
+    {
+      "id": 14,
+      "title": "Кроссовки Nike Air Max",
+      "price": 8000,
+      "description": "Беговые, белый",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.i_MpKcIWXNTRUCetDV9myAAAAA%26pid%3DApi&f=1&ipt=1f2cfaf3982fb30500bb976111a2e10d8e8a7cc9bc614474f23b2ce780a48b07&ipo=images",
+      "category": "clothing",
+      "rating": 4.8
+    },
+    {
+      "id": 15,
+      "title": "Рюкзак Herschel",
+      "price": 5000,
+      "description": "Повседневный, синий",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.abG5BupuL6BurnsNwhXCwAHaKs%26pid%3DApi&f=1&ipt=f365ec45f2c3b4cefed69bb9e6feecd1b94a314641855d0aabb68f3d010649bb&ipo=images",
+      "category": "clothing",
+      "rating": 4.6
+    },
+    {
+      "id": 16,
+      "title": "Часы Casio G-Shock",
+      "price": 12000,
+      "description": "Ударопрочные, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.uE1k2T7GcNogDzU6tiNtdgHaHZ%26pid%3DApi&f=1&ipt=b863f10df6090bca397862bcf7195749a786880065ff6afab7cc1a74229f6b16&ipo=images",
+      "category": "clothing",
+      "rating": 4.7
+    },
+    {
+      "id": 17,
+      "title": "Очки Ray-Ban",
+      "price": 9000,
+      "description": "Солнцезащитные, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.Ss3iCOx5NdVssJPMUKaAbgHaE8%26pid%3DApi&f=1&ipt=38f1e9476d206430fe196982be8cc8a3143b943ca7bccf8e0fd925f61beb7f69&ipo=images",
+      "category": "clothing",
+      "rating": 4.8
+    },
+    {
+      "id": 18,
+      "title": "Шапка вязаная",
+      "price": 1000,
+      "description": "Шерсть, серый",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%3Fid%3DOIP.sYCmLdDm_0oUWx_Vru2YowHaJy%26pid%3DApi&f=1&ipt=ffa0c3d0c4303a50d968d278e6f31d1f203221bf446b45846d56e4b0c8b66517&ipo=images",
+      "category": "clothing",
+      "rating": 4.5
+    },
+    {
+      "id": 19,
+      "title": "Платье вечернее",
+      "price": 7000,
+      "description": "Шелк, черный",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.Iai1u2QjaWcZtQ8wfK4caAHaLG%26pid%3DApi&f=1&ipt=1c542edf25c4039772d5c6381b92a5f80c48f989578059ba58c6b7d24e893931&ipo=images",
+      "category": "clothing",
+      "rating": 4.7
+    },
+    {
+      "id": 20,
+      "title": "Сумка женская",
+      "price": 6000,
+      "description": "Кожа, бежевый",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.lIu8POBuEL0IqvxKb6105QHaHa%26pid%3DApi&f=1&ipt=6b13b646d0953d2d67e815586ec57daa453e5639acb3fc1275eaefe6871c7f66&ipo=images",
+      "category": "clothing",
+      "rating": 4.6
+    },
+    {
+      "id": 21,
+      "title": "Книга '1984'",
+      "price": 500,
+      "description": "Джордж Оруэлл",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.azk3H6NAEtE6oaU3BfPGSwHaLp%26pid%3DApi&f=1&ipt=84193eebf6e7e603857bf6d5610953cf0a6afa46e3b9d62ab5b762d6b92c3e7b&ipo=images",
+      "category": "books",
+      "rating": 4.9
+    },
+    {
+      "id": 22,
+      "title": "Книга 'Мастер и Маргарита'",
+      "price": 600,
+      "description": "Михаил Булгаков",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.g15_vlPHe3ZuaQkXdS4S7AHaE8%26pid%3DApi&f=1&ipt=35c263fd2123c68485eaf60995815cf1375791b42e11df881a07e71fcf8b5705&ipo=images",
+      "category": "books",
+      "rating": 4.8
+    },
+    {
+      "id": 23,
+      "title": "Книга 'Гарри Поттер и Философский камень'",
+      "price": 700,
+      "description": "Джоан Роулинг",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.pOrnSk_TY6LOeq6AiuBmNgHaH7%26pid%3DApi&f=1&ipt=60a72d635957b7148f3043fb94fd75463ebefd1f471618a054b2d5b368f293be&ipo=images",
+      "category": "books",
+      "rating": 4.9
+    },
+    {
+      "id": 24,
+      "title": "Книга 'Война и мир'",
+      "price": 800,
+      "description": "Лев Толстой",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.xEBli3zi_pf2iVKj0wkg4AHaGc%26pid%3DApi&f=1&ipt=3e34d0d46a12dfb55905475c90a04fb6a7096b1ef838cf6b2a25c4dc79c5d216&ipo=images",
+      "category": "books",
+      "rating": 4.7
+    },
+    {
+      "id": 25,
+      "title": "Книга 'Преступление и наказание'",
+      "price": 550,
+      "description": "Федор Достоевский",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ZPGKpgWYQvdqhm_hra0SWgHaHa%26pid%3DApi&f=1&ipt=fe1925f36059983fa3ee727bdf7d591d94a1da57bd0f0e8142f1e85bae653ed0&ipo=images",
+      "category": "books",
+      "rating": 4.8
+    },
+    {
+      "id": 26,
+      "title": "Книга 'Маленький принц'",
+      "price": 400,
+      "description": "Антуан де Сент-Экзюпери",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.explicit.bing.net%2Fth%3Fid%3DOIP.6xPGQLa2x-ianmJsdlM8FgHaJk%26pid%3DApi&f=1&ipt=3f7dc012d999d8d6880c3da6083a4c3886ea6e9e4deed215bee7597b1c1036a2&ipo=images",
+      "category": "books",
+      "rating": 4.9
+    },
+    {
+      "id": 27,
+      "title": "Книга 'Алхимик'",
+      "price": 650,
+      "description": "Пауло Коэльо",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.2P0eyHK-kD3_IZJ7WTo2cQAAAA%26pid%3DApi&f=1&ipt=4f7c4da0cc120b444181e6dba1b6e965c2dbe22ec8dc2de2d15eb67e40fb2419&ipo=images",
+      "category": "books",
+      "rating": 4.7
+    },
+    {
+      "id": 28,
+      "title": "Книга 'Три товарища'",
+      "price": 750,
+      "description": "Эрих Мария Ремарк",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.LL5WFIFMKun1P_nFTkzwxwAAAA%26pid%3DApi&f=1&ipt=e943f64ecb47e513c35f0090c26b6439edcd1b1beeafce988f6d8696371dfbf1&ipo=images",
+      "category": "books",
+      "rating": 4.8
+    },
+    {
+      "id": 29,
+      "title": "Книга 'Тень горы'",
+      "price": 900,
+      "description": "Грегори Дэвид Робертс",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.lIYNRxoi1aD41yvczaD0LgHaHH%26pid%3DApi&f=1&ipt=40d949b5f733a010acf5c0c4ab66053665fb0c5a5ee396a9edfda6cd6af6ac51&ipo=images",
+      "category": "books",
+      "rating": 4.7
+    },
+    {
+      "id": 30,
+      "title": "Книга 'Шантарам'",
+      "price": 850,
+      "description": "Грегори Дэвид Робертс",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.jU5Vt1tcgyZukDollPtn-wHaEo%26pid%3DApi&f=1&ipt=ea9fad68b4085b1676566072bf172d1ba2be63507415585b242d9453ef5b4a4f&ipo=images",
+      "category": "books",
+      "rating": 4.8
+    }
+  ]
+}
