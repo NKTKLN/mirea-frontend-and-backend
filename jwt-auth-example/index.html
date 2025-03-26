@@ -3,10 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пример аутентификации с JWT</title>
+    <title>Аутентификация с JWT</title>
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --light-bg: #1e1e1e;
+            --purple-accent: #8657DB;
+            --light-text: #ffffff;
+            --gray-text: #bbbbbb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--purple-accent);
+        }
+
+        div {
+            background: var(--light-bg);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center; /* Выравнивание содержимого по центру */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--purple-accent);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            background: var(--dark-bg);
+            border: 1px solid var(--gray-text);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            color: var(--light-text);
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--purple-accent);
+            outline: none;
+        }
+
+        button {
+            background: var(--purple-accent);
+            color: var(--light-text);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px; /* Увеличена горизонтальная отступка */
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block; /* Для корректного выравнивания */
+        }
+
+        button:hover {
+            background: #6a49b6;
+        }
+
+        p {
+            margin-top: 10px;
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        #protectedData {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: var(--light-text);
+        }
+    </style>
 </head>
 <body>
-    <h1>Пример аутентификации с JWT</h1>
+    <h1>Аутентификация с JWT</h1>
 
     <div>
         <h2>Регистрация</h2>
