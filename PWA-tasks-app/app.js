@@ -1,47 +1,151 @@
-const input = document.getElementById('note-input');
-const addButton = document.getElementById('add-note');
-const notesList = document.getElementById('notes-list');
+const taskInput = document.getElementById('task-input');
+const addButton = document.getElementById('add-task');
+const tasksList = document.getElementById('tasks-list');
+const allBtn = document.getElementById('all-btn');
+const activeBtn = document.getElementById('active-btn');
+const completedBtn = document.getElementById('completed-btn');
 
-function loadNotes() {
-  const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-  notesList.innerHTML = '';
-  notes.forEach((note, index) => {
+let currentFilter = 'all';
+let editingIndex = null;
+
+// Загрузка задач
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  tasksList.innerHTML = '';
+  
+  const filteredTasks = tasks.filter(task => {
+    if (currentFilter === 'active') return !task.completed;
+    if (currentFilter === 'completed') return task.completed;
+    return true;
+  });
+  
+  filteredTasks.forEach((task, index) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${note}</span><button onclick="deleteNote(${index})">Удалить</button>`;
-    notesList.appendChild(li);
+    li.className = task.completed ? 'completed' : '';
+    
+    if (editingIndex === index) {
+      li.innerHTML = `
+        <input type="checkbox" ${task.completed ? 'checked' : ''} 
+               onchange="toggleTask(${index})">
+        <input type="text" id="edit-input-${index}" value="${task.text}">
+        <button onclick="saveTask(${index})">Сохранить</button>
+        <button onclick="cancelEdit()">Отмена</button>
+      `;
+    } else {
+      li.innerHTML = `
+        <input type="checkbox" ${task.completed ? 'checked' : ''} 
+               onchange="toggleTask(${index})">
+        <span ondblclick="startEdit(${index})">${task.text}</span>
+        <button onclick="deleteTask(${index})">Удалить</button>
+        <button onclick="startEdit(${index})">Редактировать</button>
+      `;
+    }
+    
+    tasksList.appendChild(li);
   });
 }
 
-function addNote() {
-  const text = input.value.trim();
+// Добавление задачи
+function addTask() {
+  const text = taskInput.value.trim();
   if (!text) return;
-  const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-  notes.push(text);
-  localStorage.setItem('notes', JSON.stringify(notes));
-  input.value = '';
-  loadNotes();
-}
-
-function deleteNote(index) {
-  const notes = JSON.parse(localStorage.getItem('notes') || '[]');
-  notes.splice(index, 1);
-  localStorage.setItem('notes', JSON.stringify(notes));
-  loadNotes();
-}
-
-addButton.addEventListener('click', addNote);
-window.addEventListener('load', () => {
-  loadNotes();
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+  
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  const newTask = { text, completed: false, createdAt: new Date().toISOString() };
+  tasks.push(newTask);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  
+  taskInput.value = '';
+  loadTasks();
+  
+  // Отправка уведомления о новой задаче
+  if (Notification.permission === 'granted') {
+    showNotification('Новая задача', `Добавлена: "${text}"`);
   }
-});
+}
 
+// Начало редактирования
+function startEdit(index) {
+  editingIndex = index;
+  loadTasks();
+}
+
+// Сохранение изменений
+function saveTask(index) {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  const editInput = document.getElementById(`edit-input-${index}`);
+  tasks[index].text = editInput.value.trim();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  editingIndex = null;
+  loadTasks();
+}
+
+// Отмена редактирования
+function cancelEdit() {
+  editingIndex = null;
+  loadTasks();
+}
+
+// Переключение статуса задачи
+function toggleTask(index) {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  tasks[index].completed = !tasks[index].completed;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  loadTasks();
+}
+
+// Удаление задачи
+function deleteTask(index) {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  tasks.splice(index, 1);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  loadTasks();
+}
+
+// Фильтрация задач
+function setFilter(filter) {
+  currentFilter = filter;
+  allBtn.classList.remove('active');
+  activeBtn.classList.remove('active');
+  completedBtn.classList.remove('active');
+  
+  if (filter === 'all') allBtn.classList.add('active');
+  if (filter === 'active') activeBtn.classList.add('active');
+  if (filter === 'completed') completedBtn.classList.add('active');
+  
+  loadTasks();
+}
+
+// Проверка онлайн-статуса
 function updateOnlineStatus() {
   const banner = document.getElementById('offline-indicator');
   banner.style.display = navigator.onLine ? 'none' : 'block';
 }
 
+// Инициализация
+addButton.addEventListener('click', addTask);
+allBtn.addEventListener('click', () => setFilter('all'));
+activeBtn.addEventListener('click', () => setFilter('active'));
+completedBtn.addEventListener('click', () => setFilter('completed'));
+
+window.addEventListener('load', () => {
+  loadTasks();
+  updateOnlineStatus();
+  
+  // Регистрация Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered'))
+      .catch(err => console.log('SW registration failed: ', err));
+  }
+});
+
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
-updateOnlineStatus();
+
+// Глобальные функции для использования в HTML
+window.toggleTask = toggleTask;
+window.deleteTask = deleteTask;
+window.startEdit = startEdit;
+window.saveTask = saveTask;
+window.cancelEdit = cancelEdit;

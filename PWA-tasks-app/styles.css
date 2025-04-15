@@ -126,7 +126,100 @@ li button:hover {
   background-color: var(--danger-hover);
 }
 
-/* Responsive Design */
+/* Фильтры */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  background-color: var(--light-bg);
+  color: var(--gray-text);
+  border: 1px solid var(--gray-text);
+}
+
+.filter-btn.active {
+  background-color: var(--purple-accent);
+  color: var(--light-text);
+  border-color: var(--purple-accent);
+}
+
+/* Ввод задачи */
+.task-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+#task-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-text);
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  min-height: auto;
+}
+
+#tasks-list {
+  margin-top: 0;
+}
+
+#tasks-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#tasks-list li.completed span {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+#tasks-list input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.notifications {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-text);
+}
+
+#notification-status {
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+#tasks-list li input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--gray-text);
+  border-radius: 4px;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+#tasks-list li button {
+  padding: 6px 12px;
+  font-size: 0.9em;
+  margin-left: 8px;
+}
+
+#tasks-list li span {
+  flex: 1;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+#tasks-list li span:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 20px;

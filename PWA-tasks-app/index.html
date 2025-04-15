@@ -2,19 +2,37 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Заметки</title>
+  <title>Task Manager PWA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8657DB">
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div id="offline-indicator">Офлайн-режим</div>
   <div class="container">
-    <h1>Заметки</h1>
-    <textarea id="note-input" placeholder="Введите заметку..."></textarea>
-    <button id="add-note">Добавить</button>
-    <ul id="notes-list"></ul>
+    <h1>Менеджер задач</h1>
+    
+    <div class="filters">
+      <button id="all-btn" class="filter-btn active">Все</button>
+      <button id="active-btn" class="filter-btn">Активные</button>
+      <button id="completed-btn" class="filter-btn">Выполненные</button>
+    </div>
+    
+    <div class="task-input">
+      <input id="task-input" type="text" placeholder="Добавить новую задачу...">
+      <button id="add-task">Добавить</button>
+    </div>
+    
+    <ul id="tasks-list"></ul>
+    
+    <div class="notifications">
+      <button id="notify-btn">Включить уведомления</button>
+      <div id="notification-status"></div>
+    </div>
   </div>
+  
   <script src="/app.js"></script>
+  <script src="/push.js"></script>
 </body>
 </html>
