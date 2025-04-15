@@ -4,7 +4,6 @@ const statusEl = document.getElementById('notification-status');
 
 console.log('Initializing notification service...');
 
-// Проверка поддержки уведомлений
 function checkNotificationSupport() {
   console.log('Checking notification support...');
   
@@ -33,7 +32,6 @@ function checkNotificationSupport() {
   return true;
 }
 
-// Инициализация уведомлений
 async function initializeNotifications() {
   console.log('Initializing notifications...');
   
@@ -62,7 +60,6 @@ async function initializeNotifications() {
   }
 }
 
-// Обновление UI
 function updateUI(isSubscribed) {
   console.log(`Updating UI. Subscribed: ${isSubscribed}`);
   
@@ -77,7 +74,6 @@ function updateUI(isSubscribed) {
   }
 }
 
-// Подписка на уведомления
 async function subscribeToPush() {
   console.log('Attempting to subscribe to push notifications...');
   
@@ -99,7 +95,6 @@ async function subscribeToPush() {
   }
 }
 
-// Отписка от уведомлений
 async function unsubscribeFromPush() {
   console.log('Attempting to unsubscribe from push notifications...');
   
@@ -125,7 +120,6 @@ async function unsubscribeFromPush() {
   }
 }
 
-// Обработчик кнопки уведомлений
 notifyBtn.addEventListener('click', async () => {
   console.log('Notification button clicked');
   
@@ -164,7 +158,6 @@ notifyBtn.addEventListener('click', async () => {
   }
 });
 
-// Показать уведомление
 function showNotification(title, body) {
   console.log(`Attempting to show notification: ${title} - ${body}`);
   
@@ -185,7 +178,6 @@ function showNotification(title, body) {
   }
 }
 
-// Вспомогательная функция для преобразования ключа
 function urlBase64ToUint8Array(base64String) {
   console.log('Converting VAPID public key...');
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -204,7 +196,6 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-// Инициализация при загрузке
 window.addEventListener('load', () => {
   console.log('Window loaded, initializing notifications...');
   initializeNotifications().catch(error => {

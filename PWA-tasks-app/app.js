@@ -8,7 +8,6 @@ const completedBtn = document.getElementById('completed-btn');
 let currentFilter = 'all';
 let editingIndex = null;
 
-// Загрузка задач
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   tasksList.innerHTML = '';
@@ -45,7 +44,6 @@ function loadTasks() {
   });
 }
 
-// Добавление задачи
 function addTask() {
   const text = taskInput.value.trim();
   if (!text) return;
@@ -58,19 +56,16 @@ function addTask() {
   taskInput.value = '';
   loadTasks();
   
-  // Отправка уведомления о новой задаче
   if (Notification.permission === 'granted') {
     showNotification('Новая задача', `Добавлена: "${text}"`);
   }
 }
 
-// Начало редактирования
 function startEdit(index) {
   editingIndex = index;
   loadTasks();
 }
 
-// Сохранение изменений
 function saveTask(index) {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   const editInput = document.getElementById(`edit-input-${index}`);
@@ -80,13 +75,11 @@ function saveTask(index) {
   loadTasks();
 }
 
-// Отмена редактирования
 function cancelEdit() {
   editingIndex = null;
   loadTasks();
 }
 
-// Переключение статуса задачи
 function toggleTask(index) {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   tasks[index].completed = !tasks[index].completed;
@@ -94,7 +87,6 @@ function toggleTask(index) {
   loadTasks();
 }
 
-// Удаление задачи
 function deleteTask(index) {
   const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
   tasks.splice(index, 1);
@@ -102,7 +94,6 @@ function deleteTask(index) {
   loadTasks();
 }
 
-// Фильтрация задач
 function setFilter(filter) {
   currentFilter = filter;
   allBtn.classList.remove('active');
@@ -116,13 +107,11 @@ function setFilter(filter) {
   loadTasks();
 }
 
-// Проверка онлайн-статуса
 function updateOnlineStatus() {
   const banner = document.getElementById('offline-indicator');
   banner.style.display = navigator.onLine ? 'none' : 'block';
 }
 
-// Инициализация
 addButton.addEventListener('click', addTask);
 allBtn.addEventListener('click', () => setFilter('all'));
 activeBtn.addEventListener('click', () => setFilter('active'));
@@ -132,7 +121,6 @@ window.addEventListener('load', () => {
   loadTasks();
   updateOnlineStatus();
   
-  // Регистрация Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => console.log('SW registered'))
@@ -143,7 +131,6 @@ window.addEventListener('load', () => {
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 
-// Глобальные функции для использования в HTML
 window.toggleTask = toggleTask;
 window.deleteTask = deleteTask;
 window.startEdit = startEdit;
