@@ -112,6 +112,37 @@ function updateOnlineStatus() {
   banner.style.display = navigator.onLine ? 'none' : 'block';
 }
 
+
+document.getElementById('test-reminder-btn')?.addEventListener('click', () => {
+  if (hasUncompletedTasks()) {
+    showReminderNotification();
+  } else {
+    alert('Нет невыполненных задач для напоминания');
+  }
+});
+
+function updateReminderInfo() {
+  const infoEl = document.getElementById('reminder-info');
+  if (!infoEl) return;
+  
+  if (!('PeriodicSyncManager' in window)) {
+    infoEl.textContent = 'Используется резервный метод (интервалы)';
+  } else {
+    infoEl.textContent = 'Периодические напоминания активны';
+  }
+  
+  const tasks = JSON.parse(localStorage.getItem('tasks') || []);
+  const uncompletedCount = tasks.filter(task => !task.completed).length;
+  
+  if (uncompletedCount > 0) {
+    infoEl.textContent += ` | ${uncompletedCount} невыполненных задач`;
+  } else {
+    infoEl.textContent += ' | Все задачи выполнены';
+  }
+}
+
+window.addEventListener('load', updateReminderInfo);
+
 addButton.addEventListener('click', addTask);
 allBtn.addEventListener('click', () => setFilter('all'));
 activeBtn.addEventListener('click', () => setFilter('active'));

@@ -18,6 +18,36 @@ self.addEventListener('install', event => {
   );
 });
 
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow('/')
+  );
+});
+
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'check-tasks-reminder') {
+    event.waitUntil(checkUncompletedTasks());
+  }
+});
+
+async function checkUncompletedTasks() {
+  const clientsList = await clients.matchAll({ includeUncontrolled: true });
+  for (const client of clientsList) {
+    client.postMessage({ type: 'check-uncompleted-tasks' });
+  }
+}
+
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'trigger-reminder') {
+    self.registration.showNotification('Напоминание о задачах', {
+      body: 'У вас есть невыполненные задачи!',
+      icon: '/icons/icon-192.png',
+      vibrate: [200, 100, 200]
+    });
+  }
+});
+
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()

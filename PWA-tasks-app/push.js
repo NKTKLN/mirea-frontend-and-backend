@@ -202,3 +202,77 @@ window.addEventListener('load', () => {
     console.error('Initialization error:', error);
   });
 });
+
+function hasUncompletedTasks() {
+  const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+  return tasks.some(task => !task.completed);
+}
+
+async function startTaskReminders() {
+  if (!('serviceWorker' in navigator)) return;
+  if (!('PeriodicSyncManager' in window)) {
+    console.warn('Periodic Sync API не поддерживается, используем интервалы');
+    // Fallback для браузеров без PeriodicSync API
+    setInterval(() => {
+      if (hasUncompletedTasks()) {
+        showReminderNotification();
+      }
+    }, 2 * 60 * 60 * 1000); // 2 часа
+    return;
+  }
+
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    try {
+      await reg.periodicSync.register('check-tasks-reminder', {
+        minInterval: 2 * 60 * 60 * 1000 // 2 часа
+      });
+      console.log('Периодические напоминания зарегистрированы');
+    } catch (error) {
+      console.error('Ошибка регистрации периодических напоминаний:', error);
+    }
+  } catch (error) {
+    console.error('Ошибка доступа к Service Worker:', error);
+  }
+}
+
+function showReminderNotification() {
+  if (Notification.permission !== 'granted') return;
+  
+  const tasks = JSON.parse(localStorage.getItem('tasks') || []);
+  const uncompletedCount = tasks.filter(task => !task.completed).length;
+  
+  if (uncompletedCount > 0) {
+    navigator.serviceWorker.ready.then(reg => {
+      reg.showNotification('Невыполненные задачи', {
+        body: `У вас ${uncompletedCount} невыполненных задач`,
+        icon: '/icons/icon-192.png',
+        vibrate: [200, 100, 200]
+      });
+    });
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', (event) => {
+    if (event.data.type === 'check-uncompleted-tasks') {
+      if (hasUncompletedTasks()) {
+        showReminderNotification();
+      }
+    }
+  });
+}
+
+window.addEventListener('load', () => {
+  loadTasks();
+  updateOnlineStatus();
+  
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => {
+        console.log('SW registered');
+        startTaskReminders();
+      })
+      .catch(err => console.log('SW registration failed: ', err));
+  }
+});
