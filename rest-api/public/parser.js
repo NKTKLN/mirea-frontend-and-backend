@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterProductsByCategory();
 
-    const socket = new WebSocket('ws://localhost:5000'); 
+    const socket = new WebSocket('ws://localhost:5001'); 
 
     // Элементы чата
     const sendButton = document.getElementById('send-btn');

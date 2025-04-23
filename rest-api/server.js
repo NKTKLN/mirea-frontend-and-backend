@@ -11,8 +11,8 @@ const ejs = require('ejs');
 const API_PORT = 8080;
 const WEB_PORT = 3000;
 const GRAPHQL_PORT = 4000;
-const WEBSOCKET_PORT = 5000;
-const DATA_FILE = 'db.json';
+const WEBSOCKET_PORT = 5001;
+const DATA_FILE = 'db/db.json';
 
 const options = {
     definition: {

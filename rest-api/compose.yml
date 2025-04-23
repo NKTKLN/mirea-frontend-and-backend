@@ -1,0 +1,14 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+      - "4000:4000"
+      - "5001:5001"
+    volumes:
+      - ./db:/usr/src/app/db
+    environment:
+      - NODE_ENV=development
