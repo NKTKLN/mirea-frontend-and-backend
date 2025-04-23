@@ -10,5 +10,3 @@ services:
       - "5001:5001"
     volumes:
       - ./db:/usr/src/app/db
-    environment:
-      - NODE_ENV=development
